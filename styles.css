@@ -38,3 +38,21 @@
     border: none;
 }
   /* CSS reset over */
+
+  .header{
+    display:flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 20px;
+
+    border-bottom: 3px solid black;
+
+  }
+
+  .headerItems{
+    margin: 10px;
+  }
+
+  .title{
+    
+  }
