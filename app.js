@@ -1,66 +1,53 @@
-let newBook = document.querySelector(".newBook");
-let content = document.querySelector(".content");
+const content = document.querySelector(".content");
+const newBook = document.querySelector(".newBook")
+const form = document.querySelector("form")
 
 
-function book(title,author,pages,status) {
+
+function game(title,completion,status,note) {
     this.title = title;
-    this.author = author;
-    this.pages = pages;
+    this.completion = completion;
     this.status = status;
+    this.note = note;
 
 }
 
-const dune = {
-    title: 'Dune',
-    author: 'Frank Herbert',
-    pages: '850',
-    status:'reading'
-}
+const myLibrary = [];
 
-const theGirlOnTheTrain = {
-    title: 'Girl on the train',
-    author: 'Paula Hawkins',
-    pages: '400',
-    status:'Completed'
-}
+//Adding book from the form to the library array
+newBook.addEventListener("click", (event) => {
+    event.preventDefault();
 
-const myLibrary = [dune,theGirlOnTheTrain];
+    const formData = new FormData(form);
 
+    let newGame = new game(formData.get("gameTitle"),formData.get("gameCompletion"),formData.get("gameStatus"),formData.get("gameNote"));
+    myLibrary.push(newGame);
+    displayGames();
 
-function addToLibrary() {
+ })
 
-}
-
-/* 
-
- */
-function displayBooks() {
+function displayGames() {
     myLibrary.map(loop) 
     
     function loop(item) {
-    const books = document.createElement("div");
-    books.classList.add('books');
-    content.appendChild(books);
+    const games = document.createElement("div");
+    games.classList.add('games');
+    content.appendChild(games);
 
-    const bookTitle = document.createElement("div");
-    bookTitle.classList.add('title')
-    books.appendChild(bookTitle);
-    bookTitle.textContent = item.title;
+    const gameTitle = document.createElement("div");
+    gameTitle.classList.add('title')
+    games.appendChild(gameTitle);
+    gameTitle.textContent = item.title;
 
-    const bookAuthor = document.createElement("div");
-    bookAuthor.classList.add('author')
-    books.appendChild(bookAuthor)
-    bookAuthor.textContent = item.author;
+    const gameCompletion = document.createElement("div");
+    gameCompletion.classList.add('completion')
+    games.appendChild(gameCompletion)
+    gameCompletion.textContent = item.completion;
 
-    const bookPages = document.createElement("div");
-    bookPages.classList.add('pages')
-    books.appendChild(bookPages)
-    bookPages.textContent = item.pages;
-
-    const bookStatus = document.createElement("div");
-    bookStatus.classList.add('status')
-    books.appendChild(bookStatus)
-    bookStatus.textContent = item.status;
+    const gameStatus = document.createElement("div");
+    gameStatus.classList.add('status')
+    games.appendChild(gameStatus)
+    gameStatus.textContent = item.status;
     
     
     
@@ -69,6 +56,5 @@ function displayBooks() {
 
     
 }
-displayBooks(myLibrary);
 
 
